@@ -7,6 +7,9 @@ public class Tests {
 		//check
 		//another check
 		//and another check
+		//hello
+		//and another hello
+		System.out.println("Check");
 	}
 
 }
