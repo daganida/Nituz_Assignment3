@@ -1,13 +1,6 @@
-import Interfaces.AirConditioner;
 import Interfaces.State;
 
-public class MyAirConditioner implements AirConditioner{
-	
-	State onOff;
-
-	public MyAirConditioner(){
-		AirConditionerData.getCurrTemperatureInRemote();
-	}
+public class Heat implements State {
 
 	@Override
 	public boolean on() {
@@ -46,18 +39,6 @@ public class MyAirConditioner implements AirConditioner{
 	}
 
 	@Override
-	public int getCurrTemp() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getRoomTemp() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
 	public void incRoomTemp(int temp) {
 		// TODO Auto-generated method stub
 		
@@ -68,8 +49,5 @@ public class MyAirConditioner implements AirConditioner{
 		// TODO Auto-generated method stub
 		
 	}
-	
-	
-	
-}
 
+}
