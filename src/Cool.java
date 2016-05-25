@@ -1,28 +1,38 @@
 import Interfaces.State;
 
 public class Cool implements State {
+	State idleCooling;
+	
+	public Cool() { 
+		idleCooling = new Cooling();
+	}
 
 	@Override
 	public boolean on() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean off() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
+	
 	}
 
 	@Override
 	public void setMode(String mode) {
-		// TODO Auto-generated method stub
-		
+		if(mode.equals("idle") && idleCooling instanceof Cool) { 
+			idleCooling = new Idle();
+			
+		}
+        if(mode.equals("cooling") && idleCooling instanceof Idle) { 
+			idleCooling = new Cooling();
+		}
+	
 	}
 
 	@Override
 	public void setTemp(int temp) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 

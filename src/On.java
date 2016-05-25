@@ -54,6 +54,7 @@ public class On implements State {
 
 	@Override
 	public void setTemp(int temp) {
+		
 		mode.setTemp(temp);
 		
 	}

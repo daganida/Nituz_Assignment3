@@ -53,7 +53,11 @@ public class MyAirConditioner implements AirConditioner{
 
 	@Override
 	public void setMode(String mode) {
+		if(onOff instanceof On)
 		onOff.setMode(mode);
+		else { 
+			System.out.println("Unable to set mode! AirConditioner is off!");
+		}
 	}
 
 	@Override
