@@ -24,7 +24,12 @@ public final class AirConditionerData {
 		check();
 		currTemperatureInRemote = temp;
 	}
-	public static void check() { 
+	public static void check() {
+		if (ans == false) { 
+			AirConditionerData ac = new AirConditionerData();
+			ans = true;
+		}
+		
 	
 	}
 
