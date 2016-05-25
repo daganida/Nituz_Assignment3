@@ -5,6 +5,7 @@ public class Tests {
 		// TODO Auto-generated method stub
 		MyAirConditioner airCond = new MyAirConditioner();
 		//check
+		//another check
 	}
 
 }
