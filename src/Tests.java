@@ -6,6 +6,7 @@ public class Tests {
 		MyAirConditioner airCond = new MyAirConditioner();
 		//
 		System.out.println("Hi");
+		//
 	}
 
 }
