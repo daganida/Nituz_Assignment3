@@ -5,6 +5,8 @@ public class Tests {
 		// TODO Auto-generated method stub
 		MyAirConditioner airCond = new MyAirConditioner();
 		//
+		System.out.println("Hi");
+		//
 	}
 
 }
