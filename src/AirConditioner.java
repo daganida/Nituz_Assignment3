@@ -8,13 +8,11 @@ public class AirConditioner implements AirConditioning
 	AirConditionerMode	currentMode;
 	
 	ACThermostat		thermostat;
-	ACRemote			acData;
+	ACRemote			remote;
 	
 	public AirConditioner() { 
 		currentState = new Off(this);
-		
 		thermostat = new ACThermostat(this);
-		acData = new ACRemote();
 	}
 
 	@Override
@@ -42,7 +40,7 @@ public class AirConditioner implements AirConditioning
 	@Override
 	public void setTemp(int temp) 
 	{
-		ACRemote.setCurrTemperatureInRemote(temp);		
+		remote.setCurrTemperatureInRemote(temp);		
 	}
 
 	@Override

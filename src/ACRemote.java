@@ -1,42 +1,32 @@
-
+import Interfaces.AirConditioning;
 
 public class ACRemote 
 {
-	int 	currTemperature;
-	String 	currentMode;
+	private int 			currTemperature;
+	private String 			currentMode;
+	private AirConditioning ac;
 
 	public ACRemote() 
 	{ 
 		currTemperature = 25;
 		currentMode = "idle";
+		ac = new AirConditioner();
 	}
 	
-	public static int getCurrTemperatureInRoom() { 
-		check();
-		return currTemperatureInRoom;
+	public int getCurrTemperatureInRemote() 
+	{ 
+		return currTemperature;
 	}
-	public static int getCurrTemperatureInRemote() { 
-		check();
-		return currTemperatureInRemote;
+	public void setCurrTemperatureInRemote(int temp) 
+	{ 
+		currTemperature = temp;
 	}
-	public static void setCurrTemperatureInRoom(int temp) { 
-		check();
-		currTemperatureInRoom = temp;
+	public void changeMode(String mode) 
+	{ 
+		ac.setMode(mode);
 	}
-	public static void setCurrTemperatureInRemote(int temp) { 
-		check();
-		currTemperatureInRemote = temp;
-	}
-	public static void check() {
-		if (ans == false) { 
-			ACRemote ac = new ACRemote();
-			ans = true;
-		}
-	}
-	public static void setCurrMode(String mode) { 
-		currentMode = mode;
-	}
-	public static String getCurrentMode() { 
+	public String getCurrentMode() 
+	{ 
 		return currentMode;
 	}
 
