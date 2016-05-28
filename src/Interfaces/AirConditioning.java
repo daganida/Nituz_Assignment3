@@ -1,6 +1,7 @@
 package Interfaces;
 
-public interface AirConditioner {
+public interface AirConditioning 
+{
 
 	//Turn on air conditioner
 		public boolean on();
@@ -18,9 +19,6 @@ public interface AirConditioner {
 		public int getCurrTemp();
 		//get current room temperature
 		public int getRoomTemp();
-		//increase room temperature
-		public void incRoomTemp(int temp);
-		//decrease room temperature
-		public void decRoomTemp(int temp);
-		
+		//get current mode
+		public String getMode();
 }

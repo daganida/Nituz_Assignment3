@@ -1,24 +1,25 @@
-import Interfaces.AirConditioner;
-import Interfaces.AirConditionerState;
+import Abstracts.AirConditionerMode;
 
-public class Cool implements AirConditionerState {
-	
-	
-	AirConditionerState idleCooling;
-	AirConditioner context;
-	
-
-
-	public Cool(AirConditioner context) {
-		// TODO Auto-generated constructor stub\
-		idleCooling = new Cooling();
-		this.context = context;
-
+public class Cool extends AirConditionerMode 
+{
+	public Cool(ACThermostat thermostat,AirConditioner conditioner) 
+	{
+		super(thermostat,conditioner);
+		this.tempDifference = -1; 
 	}
 
 	@Override
-	public void changeMode(String mode) {
-
+	public void changeMode(String mode) 
+	{
+		
 	}
-
+	public String toString()
+	{
+		return "cool";
+	}
+	
+	protected void updateTempManager()
+	{
+		this.tempManager.decRoomTemp();
+	}
 }
