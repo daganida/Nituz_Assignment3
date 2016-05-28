@@ -1,63 +1,24 @@
-import Interfaces.State;
+import Interfaces.AirConditioner;
+import Interfaces.AirConditionerState;
 
-public class Cool implements State {
-	State idleCooling;
+public class Cool implements AirConditionerState {
 	
-	public Cool() { 
+	
+	AirConditionerState idleCooling;
+	AirConditioner context;
+	
+
+
+	public Cool(AirConditioner context) {
+		// TODO Auto-generated constructor stub\
 		idleCooling = new Cooling();
+		this.context = context;
+
 	}
 
 	@Override
-	public boolean on() {
-		return true;
-	}
+	public void changeMode(String mode) {
 
-	@Override
-	public boolean off() {
-		return true;
-	
-	}
-
-	@Override
-	public void setMode(String mode) {
-		if(mode.equals("idle") && idleCooling instanceof Cool) { 
-			idleCooling = new Idle();
-			
-		}
-        if(mode.equals("cooling") && idleCooling instanceof Idle) { 
-			idleCooling = new Cooling();
-		}
-	
-	}
-
-	@Override
-	public void setTemp(int temp) {
-		
-		
-	}
-
-	@Override
-	public void incTemp(int temp) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void decTemp(int temp) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void incRoomTemp(int temp) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void decRoomTemp(int temp) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

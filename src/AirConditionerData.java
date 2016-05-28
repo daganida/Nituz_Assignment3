@@ -3,10 +3,12 @@
 public final class AirConditionerData {
 	static int currTemperatureInRoom;
 	static int currTemperatureInRemote;
+	static String currentMode;
 	static boolean ans = false;
 	private AirConditionerData() { 
 		currTemperatureInRoom = 25;
 		currTemperatureInRemote = 25;
+		currentMode = "";
 	}
 	public static int getCurrTemperatureInRoom() { 
 		check();
@@ -29,8 +31,12 @@ public final class AirConditionerData {
 			AirConditionerData ac = new AirConditionerData();
 			ans = true;
 		}
-		
-	
+	}
+	public static void setCurrMode(String mode) { 
+		currentMode = mode;
+	}
+	public static String getCurrentMode() { 
+		return currentMode;
 	}
 
 }

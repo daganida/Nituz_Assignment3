@@ -1,51 +1,17 @@
-import Interfaces.State;
+import Interfaces.AirConditioner;
+import Interfaces.AirConditionerState;
 
-public class Idle implements State {
+public class Idle implements AirConditionerState {
+	AirConditioner context;
 
-	@Override
-	public boolean on() {
-		return true;
+	public Idle(AirConditioner context) {
+		// TODO Auto-generated constructor stub
+		this.context = context;
 	}
 
 	@Override
-	public boolean off() {
-		return true;
-	}
+	public void changeMode(String mode) {
 
-	@Override
-	public void setMode(String mode) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setTemp(int temp) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void incTemp(int temp) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void decTemp(int temp) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void incRoomTemp(int temp) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void decRoomTemp(int temp) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

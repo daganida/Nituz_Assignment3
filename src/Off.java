@@ -1,50 +1,21 @@
-import Interfaces.State;
+import Interfaces.AirConditioner;
+import Interfaces.AirConditionerState;
 
-public class Off implements State {
+public class Off implements AirConditionerState {
+	AirConditioner context;
 
-	@Override
-	public boolean on() {
-		return false;
-
+	public Off(MyAirConditioner myAirConditioner) {
+		// TODO Auto-generated constructor stub
+		this.context = myAirConditioner;
 	}
 
 	@Override
-	public boolean off() {
-		return false;
-
-	}
-
-	@Override
-	public void setMode(String mode) {
+	public void changeMode(String mode) {
+		//nothing to implemenent
+		//cant change mode in Off State.
 		
 	}
 
-	@Override
-	public void setTemp(int temp) {
-		
-	}
-
-	@Override
-	public void incTemp(int temp) {
-
-		
-	}
-
-	@Override
-	public void decTemp(int temp) {
-
-		
-	}
-
-	@Override
-	public void incRoomTemp(int temp) {
-
-		
-	}
-
-	@Override
-	public void decRoomTemp(int temp) {
-		
-	}
+	
 
 }

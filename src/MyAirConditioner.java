@@ -1,125 +1,79 @@
 import Interfaces.AirConditioner;
-import Interfaces.State;
+import Interfaces.AirConditionerState;
 
 public class MyAirConditioner implements AirConditioner{
 	
-	State onOff;
-
-	public MyAirConditioner(){
-		onOff = new Off();
+	AirConditionerState onOff;
+	
+	public MyAirConditioner() { 
+		onOff = new Off(this);
+		
 	}
 
 	@Override
 	public boolean on() {
-		// TODO Auto-generated method stub
-		if(onOff instanceof Off) { 
-			onOff = new On();
-			System.out.println("AirConditioner turned on!");
-		}
-		else if (onOff == null) {
-			onOff = new On();
-			System.out.println("AirConditioner turned on!");
-
-			
-		}
-	     //meaning it is already on
-		else { 
-			System.out.println("AirConditioner already turned on!");
-			
-		}
+		onOff = new On(this);
 		return true;
 	}
 
 	@Override
 	public boolean off() {
-		if(onOff instanceof On) { 
-			onOff = new Off();
-			System.out.println("AirConditioner turned off!");
-		}
-		else if (onOff == null) {
-			onOff = new On();
-			System.out.println("AirConditioner turned off!");
-
-			
-		}
-	     //meaning it is already on
-		else { 
-			System.out.println("AirConditioner already turned off!");
-			
-		}
+		onOff = new Off(this);
 		return true;
-		
 	}
 
 	@Override
 	public void setMode(String mode) {
-		if(onOff instanceof On)
-		onOff.setMode(mode);
-		else { 
-			System.out.println("Unable to set mode! AirConditioner is off!");
-		}
+		onOff.changeMode(mode);	
 	}
 
 	@Override
 	public void setTemp(int temp) {
-		// TODO Auto-generated method stub
-		if(onOff instanceof On) { 
-			AirConditionerData.setCurrTemperatureInRemote(temp);
-			onOff.setTemp(temp);
-		}
-		else { 
-			System.out.println("AC turned off! unable to set temperature!");
-		}
-
+		AirConditionerData.setCurrTemperatureInRemote(temp);		
 	}
 
 	@Override
 	public void incTemp(int temp) {
-		if(onOff instanceof On) { 
-			AirConditionerData.setCurrTemperatureInRemote(AirConditionerData.getCurrTemperatureInRemote()+1);
-			onOff.incTemp(temp);
-		}
-		else { 
-			System.out.println("AC turned off! unable to increment temperature!");
-		}
 		
 	}
 
 	@Override
 	public void decTemp(int temp) {
-		if(onOff instanceof On) { 
-			AirConditionerData.setCurrTemperatureInRemote(AirConditionerData.getCurrTemperatureInRemote()- 1);
-			onOff.decTemp(temp);
-		}
-		else { 
-			System.out.println("AC turned off! unable to increment temperature!");
-		}
-		
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public int getCurrTemp() {
-		return AirConditionerData.getCurrTemperatureInRemote();
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public int getRoomTemp() {
-		return AirConditionerData.getCurrTemperatureInRoom();
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public void incRoomTemp(int temp) {
-		AirConditionerData.setCurrTemperatureInRoom(AirConditionerData.getCurrTemperatureInRoom()+ 1);
-
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void decRoomTemp(int temp) {
-		AirConditionerData.setCurrTemperatureInRoom(AirConditionerData.getCurrTemperatureInRoom()- 1);
+		// TODO Auto-generated method stub
 		
 	}
+	public void setAirconditionSate(AirConditionerState newState) { 
+		onOff = newState;
+	}
+	
+	
+
+	
+
 	
 	
 	
