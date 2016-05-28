@@ -1,15 +1,16 @@
 
 
-public final class AirConditionerData {
-	static int currTemperatureInRoom;
-	static int currTemperatureInRemote;
-	static String currentMode;
-	static boolean ans = false;
-	private AirConditionerData() { 
-		currTemperatureInRoom = 25;
-		currTemperatureInRemote = 25;
-		currentMode = "";
+public class ACRemote 
+{
+	int 	currTemperature;
+	String 	currentMode;
+
+	public ACRemote() 
+	{ 
+		currTemperature = 25;
+		currentMode = "idle";
 	}
+	
 	public static int getCurrTemperatureInRoom() { 
 		check();
 		return currTemperatureInRoom;
@@ -28,7 +29,7 @@ public final class AirConditionerData {
 	}
 	public static void check() {
 		if (ans == false) { 
-			AirConditionerData ac = new AirConditionerData();
+			ACRemote ac = new ACRemote();
 			ans = true;
 		}
 	}

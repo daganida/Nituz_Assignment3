@@ -1,17 +1,11 @@
-import Interfaces.AirConditioner;
-import Interfaces.AirConditionerState;
+import Abstracts.AirConditionerMode;
 
-public class Heat  implements AirConditionerState {
-	
-	
-	AirConditionerState idleHeating;
-	
-	public Heat () { 
-		idleHeating = new Heating();
-	}
-
-	public Heat(AirConditioner context) {
-		// TODO Auto-generated constructor stub
+public class Heat  extends AirConditionerMode 
+{
+	public Heat(ACThermostat thermostat,AirConditioner conditioner) 
+	{
+		super(thermostat,conditioner);
+		this.tempDifference = 1; 
 	}
 
 	@Override
@@ -19,5 +13,13 @@ public class Heat  implements AirConditionerState {
 		// TODO Auto-generated method stub
 		
 	}
-
+	public String toString()
+	{
+		return "heat";
+	}
+	
+	protected void updateTempManager()
+	{
+		this.tempManager.incRoomTemp();
+	}
 }

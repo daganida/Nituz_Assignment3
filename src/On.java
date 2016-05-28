@@ -1,28 +1,18 @@
-import Interfaces.AirConditioner;
-import Interfaces.AirConditionerState;
+import Abstracts.AirConditionerState;
 
-public class On implements AirConditionerState {
+public class On extends AirConditionerState {
 	
-	AirConditionerState mode;
-	AirConditioner context;
-	
-	
-	public On() { 
-		mode = new Cool(context);
-	}
-
-	public On(MyAirConditioner myAirConditioner) {
-		context = myAirConditioner;
+	public On(AirConditioner myAirConditioner) {
+		super(myAirConditioner);
 	}
 
 	@Override
-	public void changeMode(String modeName) {
-		if(modeName.toLowerCase().equals("heat")) { 
-			mode = new Heat(context);
-		}
-		if(modeName.toLowerCase().equals("idle")) { 
-			mode = new Idle(context);
-		}	
+	public void changeMode(String modeName) 
+	{
+		this.delegate.off();	
 	}
-
+	public String toString()
+	{
+		return "on";
+	}
 }
