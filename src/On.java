@@ -1,28 +1,72 @@
-import Interfaces.AirConditioner;
+import Abstracts.ACMode;
 import Interfaces.AirConditionerState;
+import Interfaces.IRemote;
+import Interfaces.IThermostat;
 
 public class On implements AirConditionerState {
+
+	Thread			threadThermostat;
+	Thread			threadRemote;
 	
-	AirConditionerState mode;
-	AirConditioner context;
 	
+	ACMode				mode;
+	IThermostat			thermostat;
+	IRemote				remote;
 	
 	public On() { 
-		mode = new Cool(context);
+		thermostat = new ACThermostat(mode);
+		remote = new ACRemote();
+		changeMode("cool");
+		startThreads();
+		
 	}
 
-	public On(MyAirConditioner myAirConditioner) {
-		context = myAirConditioner;
+	private void startThreads()
+	{
+		threadThermostat = new Thread(thermostat);
+		threadRemote = new Thread(remote);
+		
+		threadRemote.start();
+		threadThermostat.start();
+	}
+	
+	@Override
+	public void changeMode(String modeName) 
+	{
+		switch(modeName.toLowerCase())
+		{
+		case "heat":
+			mode = new Heat(this);
+			break;
+		case "cool":
+			mode = new Cool(this);
+			break;
+		case "idle":
+			ACMode lastMode = mode;
+			mode = new Idle(this, lastMode.toString());
+			break;
+		}
+		thermostat.setACMode(mode);
 	}
 
 	@Override
-	public void changeMode(String modeName) {
-		if(modeName.toLowerCase().equals("heat")) { 
-			mode = new Heat(context);
-		}
-		if(modeName.toLowerCase().equals("idle")) { 
-			mode = new Idle(context);
-		}	
+	public void setRoomTemperature(int temp) {
+		AirConditionerData.setCurrTemperatureInRoom(temp);
 	}
 
+	@Override
+	public void setRemoteTemperature(int temp) {
+		remote.setRemoteTemperature(temp);
+	}
+
+	@Override
+	public void incRoomTemp() 
+	{
+		thermostat.incRoomTemperature();
+	}
+
+	@Override
+	public void decRoomTemp() {
+		thermostat.decRoomTemperature();
+	}
 }

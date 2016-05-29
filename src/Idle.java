@@ -1,17 +1,31 @@
-import Interfaces.AirConditioner;
+import Abstracts.ACMode;
 import Interfaces.AirConditionerState;
 
-public class Idle implements AirConditionerState {
-	AirConditioner context;
+public class Idle extends ACMode{
 
-	public Idle(AirConditioner context) {
-		// TODO Auto-generated constructor stub
-		this.context = context;
+	String lastMode;
+	
+	public Idle(AirConditionerState onState ,String lastMode) 
+	{
+		super(onState);
+		this.lastMode = lastMode;
 	}
-
+	
 	@Override
-	public void changeMode(String mode) {
-
+	public void disableIdle()
+	{
+		onState.changeMode(lastMode);
 	}
-
+	
+	@Override
+	public boolean shouldIdle()
+	{
+		int roomTemp = AirConditionerData.getCurrTemperatureInRoom();
+		int remoteTemp = AirConditionerData.getCurrTemperatureInRemote();
+		
+		boolean shouldIdle = ((lastMode == "heat") && roomTemp >= remoteTemp) || 
+							((lastMode == "cool") && roomTemp <= remoteTemp);
+		
+		return shouldIdle;
+	}
 }

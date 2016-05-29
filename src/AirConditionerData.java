@@ -1,42 +1,44 @@
 
 
-public final class AirConditionerData {
-	static int currTemperatureInRoom;
-	static int currTemperatureInRemote;
-	static String currentMode;
-	static boolean ans = false;
-	private AirConditionerData() { 
+public class AirConditionerData 
+{
+	private static AirConditionerData instance = null;
+
+	protected int currTemperatureInRoom;
+	protected int currTemperatureInRemote;
+	protected String currentMode;
+	protected boolean ans = false;
+	
+	protected AirConditionerData() {
 		currTemperatureInRoom = 25;
 		currTemperatureInRemote = 25;
 		currentMode = "";
 	}
-	public static int getCurrTemperatureInRoom() { 
-		check();
-		return currTemperatureInRoom;
+	
+	public static AirConditionerData sharedInstance() {
+		if(instance == null) 
+		{
+			instance = new AirConditionerData();
+		}
+		return instance;
+	}
+	public static int getCurrTemperatureInRoom() {
+		return sharedInstance().currTemperatureInRoom;
 	}
 	public static int getCurrTemperatureInRemote() { 
-		check();
-		return currTemperatureInRemote;
+		return sharedInstance().currTemperatureInRemote;
 	}
 	public static void setCurrTemperatureInRoom(int temp) { 
-		check();
-		currTemperatureInRoom = temp;
+		sharedInstance().currTemperatureInRoom = temp;
 	}
 	public static void setCurrTemperatureInRemote(int temp) { 
-		check();
-		currTemperatureInRemote = temp;
-	}
-	public static void check() {
-		if (ans == false) { 
-			AirConditionerData ac = new AirConditionerData();
-			ans = true;
-		}
+		sharedInstance().currTemperatureInRemote = temp;
 	}
 	public static void setCurrMode(String mode) { 
-		currentMode = mode;
+		sharedInstance().currentMode = mode;
 	}
 	public static String getCurrentMode() { 
-		return currentMode;
+		return sharedInstance().currentMode;
 	}
 
 }

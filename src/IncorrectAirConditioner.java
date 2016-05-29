@@ -1,24 +1,23 @@
 import Interfaces.AirConditioner;
 import Interfaces.AirConditionerState;
 
-public class MyAirConditioner implements AirConditioner{
+public class IncorrectAirConditioner implements AirConditioner{
 	
 	AirConditionerState onOff;
 	
-	public MyAirConditioner() { 
-		onOff = new Off(this);
-		
+	public IncorrectAirConditioner() { 
+		onOff = new Off();
 	}
 
 	@Override
 	public boolean on() {
-		onOff = new On(this);
+		onOff = new On();
 		return true;
 	}
 
 	@Override
 	public boolean off() {
-		onOff = new Off(this);
+		onOff = new Off();
 		return true;
 	}
 
@@ -34,48 +33,35 @@ public class MyAirConditioner implements AirConditioner{
 
 	@Override
 	public void incTemp(int temp) {
-		
+		onOff.incRoomTemp();
 	}
 
 	@Override
 	public void decTemp(int temp) {
-		// TODO Auto-generated method stub
-		
+		onOff.decRoomTemp();
 	}
 
 	@Override
 	public int getCurrTemp() {
-		// TODO Auto-generated method stub
-		return 0;
+		return AirConditionerData.getCurrTemperatureInRemote();
 	}
 
 	@Override
 	public int getRoomTemp() {
-		// TODO Auto-generated method stub
-		return 0;
+		return AirConditionerData.getCurrTemperatureInRoom();
 	}
 
 	@Override
 	public void incRoomTemp(int temp) {
-		// TODO Auto-generated method stub
-		
+		onOff.incRoomTemp();
 	}
 
 	@Override
 	public void decRoomTemp(int temp) {
-		// TODO Auto-generated method stub
-		
+		onOff.decRoomTemp();		
 	}
 	public void setAirconditionSate(AirConditionerState newState) { 
 		onOff = newState;
 	}
-	
-	
-
-	
-
-	
-	
-	
 }
 

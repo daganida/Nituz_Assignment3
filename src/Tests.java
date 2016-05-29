@@ -8,7 +8,7 @@ public class Tests {
 	public static void main(String[] args) {
 		  	Scanner in = new Scanner(System.in);
 	        Scanner str = new Scanner(System.in);
-	        AirConditioner airCon = new MyAirConditioner();
+	        AirConditioner airCon = new IncorrectAirConditioner();
 	      boolean showMenu=true;
 	      while(showMenu)
 	      {

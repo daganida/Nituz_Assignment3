@@ -1,23 +1,31 @@
-import Interfaces.AirConditioner;
+import Abstracts.ACMode;
 import Interfaces.AirConditionerState;
 
-public class Heat  implements AirConditionerState {
+public class Heat extends ACMode{
+		
 	
-	
-	AirConditionerState idleHeating;
-	
-	public Heat () { 
-		idleHeating = new Heating();
-	}
-
-	public Heat(AirConditioner context) {
-		// TODO Auto-generated constructor stub
+	public Heat (AirConditionerState onState) { 
+		super(onState);
 	}
 
 	@Override
-	public void changeMode(String mode) {
-		// TODO Auto-generated method stub
-		
+	public String toString()
+	{
+		return "heat";
 	}
-
+	
+	@Override
+	public boolean shouldIdle()
+	{
+		int roomTemp = AirConditionerData.getCurrTemperatureInRoom();
+		int remoteTemp = AirConditionerData.getCurrTemperatureInRemote();
+		
+		return roomTemp >= remoteTemp;
+	}
+	
+	@Override
+	public void invokeIdle()
+	{
+		onState.changeMode("idle");
+	}
 }
