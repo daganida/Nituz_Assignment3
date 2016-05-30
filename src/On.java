@@ -43,7 +43,8 @@ public class On implements AirConditionerState {
 			break;
 		case "idle":
 			ACMode lastMode = mode;
-			mode = new Idle(this, lastMode.toString());
+			String lastModeName = lastMode!=null ? lastMode.toString() : null;
+			mode = new Idle(this, lastModeName);
 			break;
 		}
 		thermostat.setACMode(mode);
