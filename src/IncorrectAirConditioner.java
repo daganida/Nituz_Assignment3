@@ -41,12 +41,12 @@ public class IncorrectAirConditioner implements AirConditioner{
 
 	@Override
 	public void incTemp(int temp) {
-		activeState.incRoomTemp();
+		activeState.incRemoteTemp();
 	}
 
 	@Override
 	public void decTemp(int temp) {
-		activeState.decRoomTemp();
+		activeState.decRemoteTemp();
 	}
 
 	@Override

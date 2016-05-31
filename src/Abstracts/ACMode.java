@@ -24,7 +24,10 @@ public abstract class ACMode implements AirConditionerState{
 
 	@Override
 	public void decRoomTemp() {}
-	
+	@Override
+	public void incRemoteTemp() {}
+	@Override
+	public void decRemoteTemp() {}
 	public void invokeIdle()
 	{
 	}

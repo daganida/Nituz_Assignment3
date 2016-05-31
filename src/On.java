@@ -75,4 +75,14 @@ public class On implements AirConditionerState {
 	public void decRoomTemp() {
 		thermostat.decRoomTemperature();
 	}
+
+	@Override
+	public void incRemoteTemp() {
+		remote.incRemoteTemperature();
+	}
+
+	@Override
+	public void decRemoteTemp() {
+		remote.decRemoteTemperature();
+	}
 }

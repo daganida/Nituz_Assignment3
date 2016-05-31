@@ -14,16 +14,16 @@ public class Off implements AirConditionerState {
 
 	@Override
 	public void setRoomTemperature(int temp) {}
-
 	@Override
 	public void setRemoteTemperature(int temp) {}
-
 	@Override
 	public void incRoomTemp() {}
-
 	@Override
 	public void decRoomTemp() {}
-
+	@Override
+	public void incRemoteTemp() {}
+	@Override
+	public void decRemoteTemp() {}
 	
 
 }
