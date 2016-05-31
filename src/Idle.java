@@ -28,4 +28,9 @@ public class Idle extends ACMode{
 		
 		return shouldIdle;
 	}
+	@Override
+	public String toString()
+	{
+		return "idle";
+	}
 }

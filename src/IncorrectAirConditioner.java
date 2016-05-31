@@ -3,27 +3,35 @@ import Interfaces.AirConditionerState;
 
 public class IncorrectAirConditioner implements AirConditioner{
 	
-	AirConditionerState onOff;
+	AirConditionerState on;
+	AirConditionerState off;
 	
-	public IncorrectAirConditioner() { 
-		onOff = new Off();
+	AirConditionerState activeState;
+	
+	public IncorrectAirConditioner() {
+		off = new Off();
+		activeState = off;
 	}
 
 	@Override
 	public boolean on() {
-		onOff = new On();
+		if (on == null)
+		{
+			on = new On();
+		}
+		activeState = on;
 		return true;
 	}
 
 	@Override
 	public boolean off() {
-		onOff = new Off();
+		activeState = off;
 		return true;
 	}
 
 	@Override
 	public void setMode(String mode) {
-		onOff.changeMode(mode);	
+		activeState.changeMode(mode);	
 	}
 
 	@Override
@@ -33,12 +41,12 @@ public class IncorrectAirConditioner implements AirConditioner{
 
 	@Override
 	public void incTemp(int temp) {
-		onOff.incRoomTemp();
+		activeState.incRoomTemp();
 	}
 
 	@Override
 	public void decTemp(int temp) {
-		onOff.decRoomTemp();
+		activeState.decRoomTemp();
 	}
 
 	@Override
@@ -53,15 +61,15 @@ public class IncorrectAirConditioner implements AirConditioner{
 
 	@Override
 	public void incRoomTemp(int temp) {
-		onOff.incRoomTemp();
+		activeState.incRoomTemp();
 	}
 
 	@Override
 	public void decRoomTemp(int temp) {
-		onOff.decRoomTemp();		
+		activeState.decRoomTemp();		
 	}
 	public void setAirconditionSate(AirConditionerState newState) { 
-		onOff = newState;
+		activeState = newState;
 	}
 }
 

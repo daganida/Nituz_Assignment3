@@ -9,7 +9,7 @@ public class On implements AirConditionerState {
 	Thread			threadRemote;
 	
 	
-	ACMode				mode;
+	protected ACMode				mode;
 	IThermostat			thermostat;
 	IRemote				remote;
 	
@@ -33,6 +33,11 @@ public class On implements AirConditionerState {
 	@Override
 	public void changeMode(String modeName) 
 	{
+		if (mode!=null)
+		{
+			System.out.println("exit ["+mode.toString()+"] state.");
+			System.out.println("enter ["+modeName+"] state.");
+		}
 		switch(modeName.toLowerCase())
 		{
 		case "heat":
